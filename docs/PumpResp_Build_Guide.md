@@ -33,8 +33,12 @@ toc-depth: 3
    5.4 [Adding the user interface components](#54-adding-the-user-interface-components)  
    5.5 [Enabling communication with other devices (optional)](#55-enabling-communication-with-other-devices-optional)  
    5.6 [Finalizing the enclosure](#56-finalizing-the-enclosure)
-6. [Software Setup](#6-software-setup)
-7. [Testing and Verification](#7-testing-and-verification)
+6. [Software Setup](#6-software-setup)   
+   6.1 [Installing the Arduino IDE and uploading firmware](#61-installing-the-arduino-ide-and-uploading-firmware)   
+   6.2 [Configuring the data‑logging software](#62-configuring-the-data‑logging-software)   
+   6.3 [Establishing the serial connection and recording data](#63-establishing-the-serial-connection-and-recording-data)    
+   6.4 [Exporting and managing recorded data](#65-exporting-and-managing-recorded-data)
+7. [Functional Testing and Verification](#7-functional-testing-and-verification)
 8. [Appendices](#8-appendices)
 
 ---
@@ -192,7 +196,39 @@ TODO: add the top recess and increase power whole
 36. Ensure the cover is seated evenly and no wires are pinched.
 
 # 6. Software Setup
+This section describes how to program the Arduino Nano and configure the software required to record data from PumpResp. The workflow below reflects the configuration tested and validated for this build.
 
-# 7. Testing and Verification
+## 6.1 Installing the Arduino IDE and uploading firmware
+PumpResp uses an Arduino Nano microcontroller (original or clone). To load the firmware:
+
+1. Install Arduino IDE 2.x from the official Arduino website.
+2. Connect the Arduino Nano to your PC via USB.
+3. In Tools → Board, select Arduino Nano.
+4. In Tools → Processor, select ATmega328P (Old Bootloader) if you are using a common Nano clone.
+5. Open the provided PumpResp .ino firmware file.
+6. Change the variable values for respirometry phases in the user interface according to your experimental design.
+7. Click Upload to flash the firmware to the board.
+
+After uploading, the Arduino Nano will begin sending serial data over USB to PC.
+
+## 6.2 Configuring the data‑logging software
+PumpResp was validated on Windows 10 using Microsoft Excel together with a customized version of the open‑source PLX‑DAQ‑2 macros. This combination provides a straightforward installation process, stable serial communication, direct data logging, and real‑time plotting.
+
+Install Microsoft Excel (version 2016 or newer) if it is not already available on your system. Download the customized PLX‑DAQ‑2 macro file (PumpResp.xlsm) from the repository and extract it to a convenient location on your computer.
+
+PLX‑DAQ‑2 is available only for Windows. Users working on macOS or Linux may employ alternative serial‑logging tools such as CoolTerm or Python with the PySerial library; however, these alternatives were not validated during development and are not covered in this guide.
+
+## 6.3 Establishing the serial connection and recording data
+After uploading the firmware (Section 6.1) and preparing the PLX‑DAQ‑2 workbook (Section 6.2), keep the Arduino Nano connected to the computer via USB.
+1. Open PumpResp.xlsm in Microsoft Excel.
+2. Enable macros when prompted.
+3. In the PLX‑DAQ‑2 control panel, select the serial port (COM number) corresponding to the connected Arduino Nano. 
+4. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet, with real‑time plots updating automatically if they are enabled.
+5. For improved performance and stability during long recordings, minimize the PLX‑DAQ‑2 control window while data collection is in progress.
+
+## 6.4 Exporting and managing recorded data
+When data collection is complete, press Disconnect in the PLX‑DAQ‑2 control panel to close the serial connection. The recorded data remain in the spreadsheet and should be saved at this stage. Export the dataset either as a standard Excel workbook (.xlsx) or as a comma‑separated values file (.csv) for downstream analysis. If the Connect button is pressed again before exporting, the spreadsheet will be cleared and new data will overwrite the previous session. Always save or export the data before reconnecting to avoid accidental data loss.
+
+# 7. Functional Testing and Verification
 
 # 8. Appendices

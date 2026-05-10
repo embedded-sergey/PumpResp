@@ -74,7 +74,7 @@ PumpResp is designed to be water-resistant, providing protection against acciden
 
 PumpResp operates at 5-24 VDC, which falls within the extra-low-voltage category recognized in electrical safety standards worldwide. Devices operating at ≤ 24 VDC are generally considered safe for personal, educational, and research use, and in most countries can be built and used without electrical certification, provided that a certified external power supply is used and no mains‑voltage wiring is modified. 
 
-The power supply unit must include integrated overcurrent protection (fuse or electronic limit) and should be selected based on the total power requirements of the connected pumps. For example, if eight pumps each draw 0.3 A at 12 V, the total current is 2.4 A. In this case, a 12 V, 4 A power supply provides sufficient overhead for safe operation (i.e., operating below ~70% of the PSU’s maximum rated output). The minimum recommended wire size for regular 5-12V is 24 AWG and 20 AWG for high‑current pump circuits.
+The power supply unit must include integrated overcurrent protection (fuse or electronic limit) and should be selected based on the total power requirements of the connected pumps. For example, if eight pumps each draw 0.3 A at 12 V, the total current is 2.4 A. In this case, a 12 V, 4 A power supply provides sufficient overhead for safe operation (i.e., operating below ~70% of the power supply unit's maximum rated output). The minimum recommended wire size for regular 5-12V is 24 AWG and 20 AWG for high‑current pump circuits.
 
 During assembly and testing, follow basic electrical‑safety practices. Keep the device disconnected from any power source while you work. Check the polarity of every wire before connecting power, and avoid any contact between the positive and negative lines. Before turning the device on, inspect all solder joints, connectors, and insulation to make sure nothing is loose or exposed. Use a multimeter to check your wiring: confirm that each connection has continuity and make sure there are no accidental shorts. Switch the device on only when you’re sure all connections are correct.
 
@@ -143,6 +143,8 @@ Safety tools:
 * heat-resistant mat
 
 # 5. Assembly Instructions
+This section contains 36 assembly steps covering mechanical preparation, wiring, and installation of all power‑distribution and control components. Before beginning the assembly, note that several steps in Sections 5 and 6 have corresponding functional checks in Section 7. These checks can be performed immediately after completing each relevant assembly step or after the full assembly is finished. Performing the checks in parallel with assembly helps identify wiring mistakes early and reduces the risk of component damage.
+
 ## 5.1 Preparing the enclosure
 **Step 1.** Unscrew the cover to open the enclosure.
 
@@ -168,7 +170,7 @@ TODO: - add the top recess
 ## 5.2 Installing power distribution components
 **Step 9.** Mount the PWM controllers to the front panel of the enclosure.
 
-**Step 10.** Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector (Check 1).
+**Step 10.** Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector (see [Check 1](#check-1-wiring-continuity-of-amp-plugs-and-pwm-modules)).
 
 Figure 2. Wiring scheme of the PumpResp: 
 TODO: ---
@@ -186,12 +188,12 @@ TODO: ---
 
 **Step 15.** Solder the shortest red wire (shown in Figure 3) to the power pin of the power connector and the lower pin of the power switch.
 
-**Step 16.** Solder the free end of the upper red multi‑wire junction and the remaining red wire to the upper pin of the power switch. This completes the high‑current power circuit (Check 2, Check 3).
+**Step 16.** Solder the free end of the upper red multi‑wire junction and the remaining red wire to the upper pin of the power switch. This completes the high‑current power circuit (see [Check 2](#check-2-no-short-circuit-in-the-high-power-circuit) & [Check 3](#check-3-no-reverse-polarity-in-the-high-power-circuit)).
 
 ## 5.3 Installing the control-side electronics
 **Step 17.** Place the relay board into the enclosure and connect the free end of the bottom red multi‑wire junction to the relay’s NO (Normally Open) terminal.
 
-**Step 18.** Connect the remaining free end of the separate red wire, soldered to the power switch, to the relay’s Common (COM) terminal (Check 4).
+**Step 18.** Connect the remaining free end of the separate red wire, soldered to the power switch, to the relay’s Common (COM) terminal (see [Check 4](#check-4-powering-up-pwm-modules-and-dc-pumps)).
 
 **Step 19.** Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3, using a wire stripper.
 
@@ -210,7 +212,7 @@ Step 20. Mount the screw‑terminal adapter to a side wall of the enclosure usin
 
 **Step 26.** Install the push button on the front panel using its mounting nut.
 
-**Step 27.** Connect the push button wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 4 (Check 5).
+**Step 27.** Connect the push button wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 4 (see [Check 5](#check-5-no-wiring-faults-in-the-lowvoltage-control-circuit)).
 
 Figure 4. Top view of the assembled device. 
 TODO: ---
@@ -241,7 +243,7 @@ This section describes how to program the Arduino Nano and configure the softwar
 ## 6.1 Installing the Arduino IDE and uploading firmware
 PumpResp uses an Arduino Nano microcontroller (original or clone). To load the firmware:
 
-1. Install Arduino IDE 2.x from the official Arduino website.
+1. Install Arduino IDE version 2.0 or later from the official Arduino website.
 2. Connect the Arduino Nano to your PC via USB.
 3. In Tools → Board, select Arduino Nano.
 4. In Tools → Processor, select ATmega328P (Old Bootloader) if you are using a common Nano clone.
@@ -249,7 +251,7 @@ PumpResp uses an Arduino Nano microcontroller (original or clone). To load the f
 6. Change the variable values for respirometry phases in the user interface according to your experimental design.
 7. Click Upload to flash the firmware to the board.
 
-After uploading, the Arduino Nano will begin sending serial data over USB to PC.
+After uploading, the Arduino Nano will begin sending serial data over USB to PC (see [Check 6](#check-6-controlling-pumps-by-arduino-code)).
 
 ## 6.2 Configuring the data‑logging software
 PumpResp was validated on Windows 10 using Microsoft Excel together with a customized version of the open‑source PLX‑DAQ‑2 macros. This combination provides a straightforward installation process, stable serial communication, direct data logging, and real‑time plotting.
@@ -263,43 +265,42 @@ After uploading the firmware (Section 6.1) and preparing the PLX‑DAQ‑2 wor
 1. Open PumpResp.xlsm in Microsoft Excel.
 2. Enable macros when prompted.
 3. In the PLX‑DAQ‑2 control panel, select the serial port (COM number) corresponding to the connected Arduino Nano. 
-4. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet, with real‑time plots updating automatically if they are enabled.
+4. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet.
 5. For improved performance and stability during long recordings, minimize the PLX‑DAQ‑2 control window while data collection is in progress.
 
 ## 6.4 Exporting and managing recorded data
-When data collection is complete, press Disconnect in the PLX‑DAQ‑2 control panel to close the serial connection. The recorded data remain in the spreadsheet and should be saved at this stage. Export the dataset either as a standard Excel workbook (.xlsx) or as a comma‑separated values file (.csv) for downstream analysis. If the Connect button is pressed again before exporting, the spreadsheet will be cleared and new data will overwrite the previous session. Always save or export the data before reconnecting to avoid accidental data loss.
+When data collection is complete, press Disconnect in the PLX‑DAQ‑2 control panel to close the serial connection. The recorded data remain in the spreadsheet and should be saved at this stage. Export the dataset either as a standard Excel workbook (.xlsx) or as a comma‑separated values file (.csv) for downstream analysis. If the Connect button is pressed again before exporting, the spreadsheet will be cleared and new data will overwrite the previous session. Always save or export the data before reconnecting to avoid accidental data loss (see [Check 7](#check-7-verifying-serial-communication-and-data-logging)).
+
+After completing all assembly and software steps, perform the full‑system validation described in 
+(see [Check 8](#check-8-full-system-test-with-submerged-pumps-and-currentdraw-safety)).
 
 # 7. Functional Testing and Verification
 This section provides a set of short, targeted functional checks to verify that PumpResp has been assembled correctly and operates safely before experimental use. Each check corresponds to an assembly or software step in Sections 5 and 6. Performing these checks reduces the risk of wiring errors, component damage, and hazardous operating conditions.
 
-**Check 1: Wiring continuity of AMP plugs and PWM modules**
-
+### Check 1: Wiring continuity of AMP plugs and PWM modules
 Set the multimeter to audible continuity mode; in this mode, it emits a continuous beep when two points are electrically connected. Use the multimeter probes to check continuity between each wire of every AMP plug and the corresponding pin on its PWM module. Perform this for all eight plugs (two wires each). If there is no beep, the wire is not connected to the expected pin.
 
-**Check 2: No short circuit in the high-power circuit**
-
+### Check 2: No short circuit in the high-power circuit
 Using the same audible continuity mode, verify that none of the red (power) wires have continuity with the black (ground) wires. Test all accessible points of the multi-wire junction and other soldered connections you can reach with the probes. If the multimeter beeps, a short circuit is present and must be corrected before proceeding.
 
-**Check 3: No reverse polarity in the high-power circuit**
-
+### Check 3: No reverse polarity in the high-power circuit
 Ensure the power switch is in the Off (0) position. Power the device using the 5.5×2.1 mm jack from the power supply unit. Set the multimeter to DC voltage mode and measure the voltage between the power pin of the power connector and any ground point on the black multi‑wire junction. If the measured voltage is negative or significantly different from the rated output voltage of the power supply, the polarity is reversed or the wiring is incorrect and must be fixed before proceeding.
 
-**Check 4: Powering up PWM modules and DC pumps**
+### Check 4: Powering up PWM modules and DC pumps
+Ensure the device is powered and the power switch is in the On (1) position. Connect DC pumps with a maximum operating voltage below the rated output of the power supply unit to the AMP plugs. Rotate each PWM knob from its minimum (far left) to maximum (far right) position. Verify that the LED indicator brightens and the pump load increases. If not, replace the PWM module or the DC pump as appropriate.
 
-Ensure the device is powered and the power switch is in the ON (1) position. Connect DC pumps with a maximum operating voltage below the rated output of the power supply unit to the AMP plugs. Rotate each PWM knob from its minimum (far left) to maximum (far right) position. Verify that the LED indicator brightens and the pump load increases. If not, replace the PWM module or the DC pump as appropriate.
-
-**Check 5: No wiring faults in the low‑voltage control circuit**
-
+### Check 5: No wiring faults in the low‑voltage control circuit
 Before connecting the Arduino Nano to a USB port, set the multimeter to audible continuity mode and verify that no unintended connections exist between the screw‑terminal adapter pins used for the LED, push button, relay control, and optional communication lines (see Figure 2 and Appendix 1). Confirm that each signal pin (5V, RESET, D4, D5, D12, D13, and optionally A4/D2 and A5/D3) is isolated from ground and from all other signal pins. Any continuity between pins that are not directly wired together in the assembly steps indicates a wiring fault that must be corrected before powering the Arduino.
 
-**Check 6**
+### Check 6: Controlling Pumps by Arduino code
+Upload the Arduino sketch and verify that the pumps and LED respond correctly to the control signals defined in the user interface. Confirm that the lower pump line follows the programmed flow pattern, including the correct duration of the flush phase. Check that the LED indicates system state as intended: it blinks during the measurement phase (flushing pump off) and remains continuously on when the flushing pump is activated.
 
-**Check 7**
+### Check 7: Verifying serial communication and data logging
+After connecting PLX‑DAQ‑2 to the Arduino Nano, confirm that data are being transmitted and recorded correctly. Ensure that the spreadsheet begins populating with time‑stamped entries immediately after pressing Connect, and verify that data continue to append without interruption during the recording period. After pressing Disconnect, check that the recorded dataset remains intact and can be saved or exported without being overwritten.
 
-**Check 8**
+### Check 8: Full system test with submerged pumps and current‑draw safety
+Submerge the pumps in their experimental chambers and run the programmed flow cycle. Adjust pump speeds using the PWM module knobs and confirm that the resulting flow is stable and appropriate for the experiment. Turn the power switch to the Off (0) position. Set the multimeter to current‑measurement mode and place the probes across the two terminals of the power switch to measure the total current draw in series. Verify that the current remains well below the maximum output current of the power supply unit: ideally under 70% of its rated limit. During operation, ensure that the power supply unit becomes only moderately warm and never hot; excessive heating indicates overload or wiring faults that must be corrected before use.
 
-**Check 9**
-
-**Check 10**
+Completing all eight checks ensures that PumpResp is fully functional, electrically safe, and ready for experimental use.
 
 # 8. Appendices

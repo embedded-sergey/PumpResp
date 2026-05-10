@@ -1,16 +1,16 @@
 ---
 title: "PumpResp Build Guide"
 author: "Sergey Morozov"
-date: "12 April 2026"
-revision: "0.3"
+date: "11 May 2026"
+revision: "0.4"
 toc: true
 toc-depth: 3
 ---
 
 # PumpResp Build Guide
-**Revision:** 0.3  
+**Revision:** 0.4  
 **Author:** Sergey Morozov  
-**Date:** 12 April 2026
+**Date:** 12 May 2026
 
 <!-- begin-md-image -->
 ![PumpResp Device](images/pumpresp_photo.jpg)
@@ -144,56 +144,96 @@ Safety tools:
 
 # 5. Assembly Instructions
 ## 5.1 Preparing the enclosure
-1. Unscrew the cover to open the enclosure.
-2. Mark out the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, as shown in Figure 1.
-3. If you use components with different form factors, or if you use an enclosure with different dimensions, adjust the blueprint accordingly or mark out the positions on the fly.
-4. Drill the holes in the marked layout on the enclosure, then adjust the hole geometry using a utility cutter. 
-5. For oval‑shaped holes on the rear panel, drill two overlapping holes and shape the opening with a cutter or a rotary tool, including the top recess.
-6. Assemble eight male waterproof connectors with 8 cm wires (if not preassembled).
-7. Remove the two protrusions on the rear side of each male waterproof connector using a rotary tool with a sanding disk.
-8. Insert the waterproof connectors into the oval‑shaped holes and secure them to the enclosure wall using a hot‑glue gun.
+**Step 1.** Unscrew the cover to open the enclosure.
 
-*Figure 1*. Blueprint of the PumpResp enclosure:
+**Step 2.** Mark out the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, as shown in Figure 1.
 
-TODO: add the top recess and increase power whole
+Figure 1. Blueprint of the PumpResp enclosure: 
+TODO: - add the top recess 
+      - increase power whole
+      - add (optional) to UART connection
+
+**Step 3.** If you use components with different form factors, or if you use an enclosure with different dimensions, adjust the blueprint accordingly or mark out the positions on the fly.
+
+**Step 4.** Drill the holes in the marked layout on the enclosure, then adjust the hole geometry using a utility cutter.
+
+**Step 5.** For oval‑shaped holes on the rear panel, drill two overlapping holes and shape the opening with a cutter or a rotary tool, including the top recess.
+
+**Step 6.** Remove the two protrusions on the bottom side of each body of a male waterproof connector using a utility cutter or a rotary tool with a sanding disk.
+
+**Step 7.** Assemble eight male waterproof connectors with 8 cm wires. Ensure that the red wire is inserted into port 1 of the connector and the black wire into port 2, respectively. Incorrect color order can lead to wiring errors.
+
+**Step 8.** Insert the waterproof connectors into the oval‑shaped holes and secure them to the enclosure wall using a hot‑glue gun.
 
 ## 5.2 Installing power distribution components
-9. Mount the PWM controllers to the front panel of the enclosure.
-10. Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector.
-11. Assemble the wire combination by soldering the wire bundles as shown in Figure 2A. Insulate all exposed solder joints with electrical tape to ensure no bare wires remain.
-12. Connect the red wires to the Motor (+) and the black wires to the Motor (–) terminals of each PWM controller as illustrated in Figure 2B.
-13. Mount the rocker power switch and the power connector to the rear panel of the enclosure.
-14. Solder the free ends of both black wire combinations to the ground pin of the power connector, and insulate the joint with electrical tape.
-15. Solder both separate red wires shown in Figure 2B to the power pin of the power connector. Then solder the other end of the shorter red wire to the lower pin of the power switch.
-16. Solder the free end of the bottom red wire combination to the upper pin of the power switch. This completes the high‑current power circuit.
+**Step 9.** Mount the PWM controllers to the front panel of the enclosure.
+
+**Step 10.** Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector (Check 1).
+
+Figure 2. Wiring scheme of the PumpResp: 
+TODO: ---
+
+**Step 11.** Assemble the two red and two black multi‑wire junctions by soldering the wire bundles as shown in Figure 3. Insulate all exposed solder joints with electrical tape to ensure no bare wires remain.
+
+Figure 3. Assembly wires and multi‑wire junctions: 
+TODO: ---
+
+**Step 12.** Connect the red wires to the Motor (+) and the black wires to the Motor (–) terminals of each PWM controller as illustrated in Figure 2.
+
+**Step 13.** Mount the rocker power switch and the power connector to the rear panel of the enclosure.
+
+**Step 14.** Solder the free ends of both black multi‑wire junctions to the ground pin of the power connector, and insulate the joint with electrical tape.
+
+**Step 15.** Solder the shortest red wire (shown in Figure 3) to the power pin of the power connector and the lower pin of the power switch.
+
+**Step 16.** Solder the free end of the upper red multi‑wire junction and the remaining red wire to the upper pin of the power switch. This completes the high‑current power circuit (Check 2, Check 3).
 
 ## 5.3 Installing the control-side electronics
-17. Place the relay board into the enclosure and connect the free end of the top red wire combination to the relay’s NO (Normally Open) terminal.
-18. Connect the remaining free end of the separate wire, soldered to the power connector, to the relay’s COM (Common) terminal.
-19. Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3A, using a wire stripper.
-20. Mount the screw‑terminal adapter to a side wall of the enclosure using an M6 machine screw inserted into the hole. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
-21. Connect the jumper wires to the relay board and secure the free wire ends in the screw‑terminal adapter as shown in Figure 4A.
+**Step 17.** Place the relay board into the enclosure and connect the free end of the bottom red multi‑wire junction to the relay’s NO (Normally Open) terminal.
+
+**Step 18.** Connect the remaining free end of the separate red wire, soldered to the power switch, to the relay’s Common (COM) terminal (Check 4).
+
+**Step 19.** Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3, using a wire stripper.
+
+Step 20. Mount the screw‑terminal adapter to a side wall of the enclosure using an M6 machine screw inserted into the hole, ensuring that the D12 and D13 labels are oriented at the top so that the Arduino Nano’s D12 pin aligns with the adapter’s D12 terminal. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
+
+**Step 21.** Connect the jumper wires to the relay board and secure the free wire ends in the screw‑terminal adapter as shown in Figure 2. For a cleaner layout and easier access to the Arduino and relay, route the red and black wires behind the terminal adapter as shown in Figure 4.
 
 ## 5.4 Adding the user interface components
-22. Solder the LED together with the 220 Ω resistor and the wires as shown in Figure 3B.
-23. Mount the LED to the corresponding hole on the front panel of the enclosure using a hot-glue gun.
-24. Connect the LED’s wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 4B.
-25. Solder the white and black wires shown in Figure 3B to the push button.
-26. Install the push button on the front panel using its mounting nut.
-27. Connect the push button wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 4C.
+**Step 22.** Solder the LED together with the 220 Ω resistor and the wires as shown in Figure 3.
+
+**Step 23.** Mount the LED to the corresponding hole on the front panel of the enclosure using a hot-glue gun.
+
+**Step 24.** Connect the LED’s wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 2.
+
+**Step 25.** Solder the white and black wires shown in Figure 3B to the push button.
+
+**Step 26.** Install the push button on the front panel using its mounting nut.
+
+**Step 27.** Connect the push button wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 4 (Check 5).
+
+Figure 4. Top view of the assembled device. 
+TODO: ---
 
 ## 5.5 Enabling communication with other devices (optional)
-28. Make an additional rectangular hole on the side panel of the enclosure as shown in Figure 5A. 
-29. Prepare four jumper wires using a wire stripper. Glue the jumper heads together forming a four-pin female connector as shown in Figure 5B to maintain alignment when inserting into the enclosure.
-30. Insert the connector into the rectangular hole and secure it to the enclosure wall using a hot‑glue gun.
-31. Connect the free ends of the connector to the screw‑terminal adapter for communication through either UART for GalvaResp or I2C for FireSting as shown in Figure 5C and Figure 5D, respectively.
+**Step 28.** Make an additional rectangular hole on the side panel of the enclosure as shown in Figure 1. 
+
+**Step 29.** Prepare four jumper wires using a wire stripper. Glue the jumper heads together to form a four‑pin female connector as shown in Figure 4, so they remain aligned when inserted into the enclosure.
+
+**Step 30.** Insert the connector into the rectangular hole and secure it to the enclosure wall using a hot‑glue gun.
+
+**Step 31.** Connect the free ends of the connector to the screw‑terminal adapter for communication through either I²C (for GalvaResp; use pins A4 and A5 as shown in Figure 2) or UART (for FireSting; use pins D2 and D3 instead, see Arduino Nano pinmap).
 
 ## 5.6 Finalizing the enclosure
-32. Insert the provided insulating material into the enclosure groove to prevent water contact between the environment and internal wiring.
-33. Fabricate a water-resistant lid that is attached to the USB cable connected to the Arduino Nano–compatible board (ATmega328P). The lid must fit the opening on the cover of the enclosure and can be made from rubber or another flexible waterproof material.
-34. Fabricate an additional water‑resistant lid to seal the opening during storage or when the USB cable is removed.
-35. Screw the cover securely to the enclosure using the original mounting screws.
-36. Ensure the cover is seated evenly and no wires are pinched.
+**Step 32.** Insert the provided insulating material into the enclosure groove to prevent water contact between the environment and internal wiring.
+
+**Step 33.** Fabricate a water-resistant lid that is attached to the USB cable connected to the Arduino Nano–compatible board (ATmega328P). The lid must fit the opening on the cover of the enclosure and can be made from rubber or another flexible waterproof material.
+
+**Step 34.** Fabricate an additional water‑resistant lid to seal the opening during storage or when the USB cable is removed.
+
+**Step 35.** Screw the cover securely to the enclosure using the original mounting screws.
+
+**Step 36.** Ensure the cover is seated evenly and that no wires are pinched when closing the enclosure.
 
 # 6. Software Setup
 This section describes how to program the Arduino Nano and configure the software required to record data from PumpResp. The workflow below reflects the configuration tested and validated for this build.
@@ -230,5 +270,36 @@ After uploading the firmware (Section 6.1) and preparing the PLX‑DAQ‑2 wor
 When data collection is complete, press Disconnect in the PLX‑DAQ‑2 control panel to close the serial connection. The recorded data remain in the spreadsheet and should be saved at this stage. Export the dataset either as a standard Excel workbook (.xlsx) or as a comma‑separated values file (.csv) for downstream analysis. If the Connect button is pressed again before exporting, the spreadsheet will be cleared and new data will overwrite the previous session. Always save or export the data before reconnecting to avoid accidental data loss.
 
 # 7. Functional Testing and Verification
+This section provides a set of short, targeted functional checks to verify that PumpResp has been assembled correctly and operates safely before experimental use. Each check corresponds to an assembly or software step in Sections 5 and 6. Performing these checks reduces the risk of wiring errors, component damage, and hazardous operating conditions.
+
+**Check 1: Wiring continuity of AMP plugs and PWM modules**
+
+Set the multimeter to audible continuity mode; in this mode, it emits a continuous beep when two points are electrically connected. Use the multimeter probes to check continuity between each wire of every AMP plug and the corresponding pin on its PWM module. Perform this for all eight plugs (two wires each). If there is no beep, the wire is not connected to the expected pin.
+
+**Check 2: No short circuit in the high-power circuit**
+
+Using the same audible continuity mode, verify that none of the red (power) wires have continuity with the black (ground) wires. Test all accessible points of the multi-wire junction and other soldered connections you can reach with the probes. If the multimeter beeps, a short circuit is present and must be corrected before proceeding.
+
+**Check 3: No reverse polarity in the high-power circuit**
+
+Ensure the power switch is in the Off (0) position. Power the device using the 5.5×2.1 mm jack from the power supply unit. Set the multimeter to DC voltage mode and measure the voltage between the power pin of the power connector and any ground point on the black multi‑wire junction. If the measured voltage is negative or significantly different from the rated output voltage of the power supply, the polarity is reversed or the wiring is incorrect and must be fixed before proceeding.
+
+**Check 4: Powering up PWM modules and DC pumps**
+
+Ensure the device is powered and the power switch is in the ON (1) position. Connect DC pumps with a maximum operating voltage below the rated output of the power supply unit to the AMP plugs. Rotate each PWM knob from its minimum (far left) to maximum (far right) position. Verify that the LED indicator brightens and the pump load increases. If not, replace the PWM module or the DC pump as appropriate.
+
+**Check 5: No wiring faults in the low‑voltage control circuit**
+
+Before connecting the Arduino Nano to a USB port, set the multimeter to audible continuity mode and verify that no unintended connections exist between the screw‑terminal adapter pins used for the LED, push button, relay control, and optional communication lines (see Figure 2 and Appendix 1). Confirm that each signal pin (5V, RESET, D4, D5, D12, D13, and optionally A4/D2 and A5/D3) is isolated from ground and from all other signal pins. Any continuity between pins that are not directly wired together in the assembly steps indicates a wiring fault that must be corrected before powering the Arduino.
+
+**Check 6**
+
+**Check 7**
+
+**Check 8**
+
+**Check 9**
+
+**Check 10**
 
 # 8. Appendices

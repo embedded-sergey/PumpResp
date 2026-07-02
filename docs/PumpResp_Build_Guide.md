@@ -45,9 +45,15 @@ toc-depth: 3
 
 # 1. Introduction
 
-PumpResp is an open‑source device for controlling pumps and recording pump‑phase data used in intermittent‑flow respirometry. It can operate up to eight 5–24 V DC pumps and can transmit data to a computer over USB. The device can also communicate with external dissolved‑oxygen meters to enable threshold‑based pump activation in addition to simple time‑based control.
+PumpResp is an open‑source device for controlling pumps and recording pump‑phase data used in intermittent‑flow respirometry. It can operate up to eight 5–24 V DC pumps and transmit data to a computer over USB. The device can also communicate with external dissolved‑oxygen meters to enable threshold‑based pump activation in addition to simple time‑based control.
 
 This guide explains how to assemble the hardware step by step. It covers preparing the enclosure, wiring the electronics, installing the user‑interface components, and loading the software. The document focuses strictly on construction and verification; experimental applications and biological context are described separately in the accompanying manuscript.
+
+**User skill level.** The build guide is intended for students, technicians, and researchers with basic technical skills. No engineering background is required. Users should be comfortable with simple soldering and basic multimeter measurements (continuity and DC voltage).
+
+**Assembly environment.** PumpResp can be assembled in any standard workspace equipped for basic electronics and mechanical tasks, including university or biological‑station workshops, applied‑sciences laboratories, or local FabLabs (a global directory is provided by the Fab Foundation). The enclosure can be purchased and modified or fabricated using a 3D printer.
+
+**Estimated build time.** Assembly, software setup, and full functional verification typically require 2–4 days for a first‑time build depending on user skills. When assembling multiple identical units, the per‑device time decreases substantially as enclosure preparation and wiring become more routine.
 
 ## Versioning
 
@@ -146,6 +152,8 @@ Safety tools:
 This section contains 36 assembly steps covering mechanical preparation, wiring, and installation of all power‑distribution and control components. Before beginning the assembly, note that several steps in Sections 5 and 6 have corresponding functional checks in Section 7. These checks can be performed immediately after completing each relevant assembly step or after the full assembly is finished. Performing the checks in parallel with assembly helps identify wiring mistakes early and reduces the risk of component damage.
 
 ## 5.1 Preparing the enclosure
+PumpResp can be assembled using either a commercially available enclosure or the provided 3D‑printed enclosure. For the printed version, drilling (Steps 2–5) is not required; the STL files are available in the PumpResp repository.
+
 **Step 1.** Unscrew the cover to open the enclosure.
 
 **Step 2.** Mark out the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, as shown in Figure 1.

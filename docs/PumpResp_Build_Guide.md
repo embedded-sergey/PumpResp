@@ -205,7 +205,7 @@ TODO: ---
 
 **Step 19.** Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3, using a wire stripper.
 
-Step 20. Mount the screw‑terminal adapter to a side wall of the enclosure using an M6 machine screw inserted into the hole, ensuring that the D12 and D13 labels are oriented at the top so that the Arduino Nano’s D12 pin aligns with the adapter’s D12 terminal. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
+**Step 20.** Mount the screw‑terminal adapter to a side wall of the enclosure using an M6 machine screw inserted into the hole, ensuring that the D12 and D13 labels are oriented at the top so that the Arduino Nano’s D12 pin aligns with the adapter’s D12 terminal. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
 
 **Step 21.** Connect the jumper wires to the relay board and secure the free wire ends in the screw‑terminal adapter as shown in Figure 2. For a cleaner layout and easier access to the Arduino and relay, route the red and black wires behind the terminal adapter as shown in Figure 4.
 
@@ -248,39 +248,57 @@ TODO: ---
 # 6. Software Setup
 This section describes how to program the Arduino Nano and configure the software required to record data from PumpResp. The workflow below reflects the configuration tested and validated for this build.
 
-## 6.1 Installing the Arduino IDE and uploading firmware
+## 6.1 Configuring the data‑logging software
+PumpResp was validated on Windows 10 using Microsoft Excel together with PLX-DAQ-2, an Excel-based serial data logger. This combination provides a straightforward installation process, stable serial communication, direct data logging, and real‑time plotting.
+
+Install Microsoft Excel (version 2016 or newer) if it is not already available on your system. Download PLX‑DAQ‑2 from its original source: https://forum.arduino.cc/t/plx-daq-version-2-now-with-64-bit-support-and-further-new-features/420628. 
+
+PumpResp includes a macro‑free Excel template (PumpResp_template.xlsx) containing recommended column names, formatting, and real‑time plots. This template is used together with PLX‑DAQ‑2 as described in Section 6.4.
+
+Note that PLX‑DAQ‑2 is available only for Windows. Users working on macOS or Linux may employ alternative serial‑logging tools such as CoolTerm or Python with the PySerial library; however, these alternatives were not validated during development and are not covered in this guide.
+
+## 6.2 Preparing the PumpResp Excel Environment
+Since PLX‑DAQ‑2 cannot be redistributed after modification and does not include the PumpResp worksheet, users should set up the PumpResp environment locally. The setup is a simple, one‑time, five‑step process and requires no programming skills.
+
+1. Unblock both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm because Windows blocks downloaded Excel macro files. Right‑click the .xlsm file, select 'Properties', tick 'Unblock' and press the 'Apply' button.
+
+2. Copy the 'PumpResp' sheet into PLX‑DAQ‑2.xlsm. Open both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm, right‑click the PumpResp sheet tab, select "Move or Copy…" and select PLX‑DAQ‑2.xlsm, press OK. Close PumpResp_template.xlsm without saving.
+
+3. Assign the Plotting macro. In PLX‑DAQ‑2.xlsm, right‑click the "Show Plots" checkbox, select "Assign Macro…", choose Sheet.ShowPlotCheckBox, and press OK.
+
+4. Delete all sheets except PumpResp. Remove all other sheets in PLX‑DAQ‑2.xlsm so that only the PumpResp sheet remains.
+
+5. Close PLX‑DAQ‑2.xlsm, save the file, and rename it to PumpResp.xlsm.
+
+Keep a backup copy of the assembled PumpResp.xlsm outside your experiment folders. If the file is lost or overwritten, it must be rebuilt using the steps in Section 6.2.
+
+## 6.3 Installing the Arduino IDE and uploading firmware
 PumpResp uses an Arduino Nano microcontroller (original or clone). To load the firmware:
 
 1. Install Arduino IDE version 2.0 or later from the official Arduino website.
 2. Connect the Arduino Nano to your PC via USB.
 3. In Tools → Board, select Arduino Nano.
 4. In Tools → Processor, select ATmega328P (Old Bootloader) if you are using a common Nano clone.
-5. Open the provided PumpResp .ino firmware file.
-6. Change the variable values for respirometry phases in the user interface according to your experimental design.
+5. Open the provided PumpResp.ino firmware file.
+6. Adjust the variable values for respirometry phases according to your experimental design.
 7. Click Upload to flash the firmware to the board.
 
 After uploading, the Arduino Nano will begin sending serial data over USB to PC (see [Check 6](#check-6-controlling-pumps-by-arduino-code)).
 
-## 6.2 Configuring the data‑logging software
-PumpResp was validated on Windows 10 using Microsoft Excel together with a customized version of the open‑source PLX‑DAQ‑2 macros. This combination provides a straightforward installation process, stable serial communication, direct data logging, and real‑time plotting.
+## 6.4 Establishing the serial connection and recording data
+Open the PumpResp.xlsm file and click on "Open PLX DAQ UI" button there if it is not popped up automatically.
 
-Install Microsoft Excel (version 2016 or newer) if it is not already available on your system. Download the customized PLX‑DAQ‑2 macro file (PumpResp.xlsm) from the repository and extract it to a convenient location on your computer.
+1. In the PLX‑DAQ‑2 control panel, select the serial port (COM number) corresponding to the connected Arduino Nano. 
+2. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet.
+3. For improved performance and stability during long recordings, minimize the PLX‑DAQ‑2 control window while data collection is in progress. 
+4. Note that editing the Excel sheet during the data collection might break the serial connection and Excel will be relaunched.
 
-PLX‑DAQ‑2 is available only for Windows. Users working on macOS or Linux may employ alternative serial‑logging tools such as CoolTerm or Python with the PySerial library; however, these alternatives were not validated during development and are not covered in this guide.
-
-## 6.3 Establishing the serial connection and recording data
-After uploading the firmware (Section 6.1) and preparing the PLX‑DAQ‑2 workbook (Section 6.2), keep the Arduino Nano connected to the computer via USB.
-1. Open PumpResp.xlsm in Microsoft Excel.
-2. Enable macros when prompted.
-3. In the PLX‑DAQ‑2 control panel, select the serial port (COM number) corresponding to the connected Arduino Nano. 
-4. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet.
-5. For improved performance and stability during long recordings, minimize the PLX‑DAQ‑2 control window while data collection is in progress.
-
-## 6.4 Exporting and managing recorded data
+## 6.5 Exporting and managing recorded data
 When data collection is complete, press Disconnect in the PLX‑DAQ‑2 control panel to close the serial connection. The recorded data remain in the spreadsheet and should be saved at this stage. Export the dataset either as a standard Excel workbook (.xlsx) or as a comma‑separated values file (.csv) for downstream analysis. If the Connect button is pressed again before exporting, the spreadsheet will be cleared and new data will overwrite the previous session. Always save or export the data before reconnecting to avoid accidental data loss (see [Check 7](#check-7-verifying-serial-communication-and-data-logging)).
 
-After completing all assembly and software steps, perform the full‑system validation described in 
-(see [Check 8](#check-8-full-system-test-with-submerged-pumps-and-currentdraw-safety)).
+After completing all assembly and software steps, perform the full‑system validation described in [Check 8](#check-8-full-system-test-with-submerged-pumps-and-currentdraw-safety).
+
+For reproducibility, store the PumpResp.ino file used for the experiment together with the PumpResp.xlsm dataset or exported .csv file.
 
 # 7. Functional Testing and Verification
 This section provides a set of short, targeted functional checks to verify that PumpResp has been assembled correctly and operates safely before experimental use. Each check corresponds to an assembly or software step in Sections 5 and 6. Performing these checks reduces the risk of wiring errors, component damage, and hazardous operating conditions.

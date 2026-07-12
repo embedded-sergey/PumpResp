@@ -17,8 +17,8 @@ const byte RELAY_OFF = HIGH;
 // IMPLEMENTATION CODE //
 /////////////////////////
 
-int LED = 5;
-int RELAY = 3;
+int LED = 4;
+int RELAY = 5;
 int PERIOD = 1;
 
 void setup()

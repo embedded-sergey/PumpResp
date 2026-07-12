@@ -1,8 +1,8 @@
 ---
 title: "PumpResp Build Guide"
 author: "Sergey Morozov"
-date: "11 May 2026"
-revision: "0.4"
+date: "12 July 2026"
+revision: "0.5"
 toc: true
 toc-depth: 3
 ---
@@ -260,15 +260,15 @@ Note that PLX‑DAQ‑2 is available only for Windows. Users working on macOS or
 ## 6.2 Preparing the PumpResp Excel Environment
 Since PLX‑DAQ‑2 cannot be redistributed after modification and does not include the PumpResp worksheet, users should set up the PumpResp environment locally. The setup is a simple, one‑time, five‑step process and requires no programming skills.
 
-1. Unblock both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm because Windows blocks downloaded Excel macro files. Right‑click the .xlsm file, select 'Properties', tick 'Unblock' and press the 'Apply' button.
+1. Unblock both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm because Windows blocks downloaded Excel macro files. Either enable Macros within Excel or right‑click the .xlsm file, select 'Properties', tick 'Unblock' and press the 'Apply' button.
 
 2. Copy the 'PumpResp' sheet into PLX‑DAQ‑2.xlsm. Open both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm, right‑click the PumpResp sheet tab, select "Move or Copy…" and select PLX‑DAQ‑2.xlsm, press OK. Close PumpResp_template.xlsm without saving.
 
-3. Assign the Plotting macro. In PLX‑DAQ‑2.xlsm, right‑click the "Show Plots" checkbox, select "Assign Macro…", choose Sheet.ShowPlotCheckBox, and press OK.
+3. Assign the Plotting macro. In PLX‑DAQ‑2.xlsm, right‑click the "Show Plots" checkbox, select "Assign Macro…", choose "Sheet2.ShowPlotCheckBox", and press OK.
 
 4. Delete all sheets except PumpResp. Remove all other sheets in PLX‑DAQ‑2.xlsm so that only the PumpResp sheet remains.
 
-5. Close PLX‑DAQ‑2.xlsm, save the file, and rename it to PumpResp.xlsm.
+5. Save the file PLX‑DAQ‑2.xlsm in Excel, close it and rename to PumpResp.xlsm.
 
 Keep a backup copy of the assembled PumpResp.xlsm outside your experiment folders. If the file is lost or overwritten, it must be rebuilt using the steps in Section 6.2.
 

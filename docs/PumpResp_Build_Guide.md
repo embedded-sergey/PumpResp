@@ -8,9 +8,9 @@ toc-depth: 3
 ---
 
 # PumpResp Build Guide
-**Revision:** 0.4  
+**Revision:** 0.5  
 **Author:** Sergey Morozov  
-**Date:** 12 May 2026
+**Date:** 12 July 2026
 
 <!-- begin-md-image -->
 ![PumpResp Device](images/pumpresp_photo.jpg)
@@ -158,10 +158,9 @@ PumpResp can be assembled using either a commercially available enclosure or the
 
 **Step 2.** Mark out the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, as shown in Figure 1.
 
-Figure 1. Blueprint of the PumpResp enclosure: 
-TODO: - add the top recess 
-      - increase power whole
-      - add (optional) to UART connection
+Figure 1. Blueprint of the PumpResp enclosure  
+![PumpResp enclosure blueprint](images/PumpResp_enclosure_blueprint.png)
+
 
 **Step 3.** If you use components with different form factors, or if you use an enclosure with different dimensions, adjust the blueprint accordingly or mark out the positions on the fly.
 

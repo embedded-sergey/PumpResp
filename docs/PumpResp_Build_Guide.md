@@ -68,7 +68,7 @@ Source files and updates are available in the public repository:
 - **Hardware designs:** CERN-OHL-S v2 
 - **Documentation (including this guide):** CC‑BY‑4.0  
 
-These licenses ensure open access, modifiability, and reproducibility across all components of the PumpResp platform.
+These licenses ensure open access, modifiability, and reproducibility across all components of the PumpResp platform. If this guide contains hardware diagrams or code snippets, those components are licensed under their respective hardware or software licenses.
 
 # 2. Safety Notes
 

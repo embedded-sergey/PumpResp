@@ -57,8 +57,18 @@ provided that you give appropriate credit.
 Full license text:
 https://creativecommons.org/licenses/by/4.0/legalcode
 
+4. Mixed‑Content Files
+----------------------
+Some files in this repository may contain multiple types of content. For example, documentation files may include hardware diagrams, wiring schematics, or software code snippets.
 
-4. Disclaimer of Warranty and Liability
+Each component within such mixed‑content files is licensed under its respective license:
+- hardware elements → CERN‑OHL‑S v2
+- software elements → GPL‑3.0
+- documentation elements → CC‑BY‑4.0
+
+When reusing or modifying mixed‑content files, please ensure that each part is handled according to the license that applies to that specific component.
+
+5. Disclaimer of Warranty and Liability
 ---------------------------------------
 To the maximum extent permitted by applicable law:
 
@@ -74,7 +84,7 @@ By using any part of this repository, you accept full responsibility for your
 own implementation, testing, and safety practices.
 
 
-5. Summary
+6. Summary
 ----------
 Hardware:        CERN-OHL-S v2
 Software:        GPL-3.0

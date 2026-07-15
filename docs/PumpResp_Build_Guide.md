@@ -1,16 +1,16 @@
 ---
 title: "PumpResp Build Guide"
 author: "Sergey Morozov"
-date: "12 July 2026"
-revision: "0.5"
+date: "14 July 2026"
+revision: "0.6"
 toc: true
 toc-depth: 3
 ---
 
 # PumpResp Build Guide
-**Revision:** 0.5  
+**Revision:** 0.6
 **Author:** Sergey Morozov  
-**Date:** 12 July 2026
+**Date:** 14 July 2026
 
 <!-- begin-md-image -->
 ![PumpResp Device](images/pumpresp_photo.jpg)
@@ -177,15 +177,15 @@ Figure 1. Blueprint of the PumpResp enclosure
 ## 5.2 Installing power distribution components
 **Step 9.** Mount the PWM controllers to the front panel of the enclosure.
 
-**Step 10.** Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector (see [Check 1](#check-1-wiring-continuity-of-amp-plugs-and-pwm-modules)).
+**Step 10.** Connect the male waterproof connector wires to the Power (+) and Power (–) terminals of the corresponding PWM controller located in front of the connector as shown in Figure 2 (see [Check 1](#check-1-wiring-continuity-of-amp-plugs-and-pwm-modules)).
 
-Figure 2. Wiring scheme of the PumpResp: 
-TODO: ---
+Figure 2. Wiring scheme of the PumpResp
+![Wiring scheme of the PumpResp](images/PumpResp_wiring_diagram.png)
 
 **Step 11.** Assemble the two red and two black multi‑wire junctions by soldering the wire bundles as shown in Figure 3. Insulate all exposed solder joints with electrical tape to ensure no bare wires remain.
 
 Figure 3. Assembly wires and multi‑wire junctions: 
-TODO: ---
+
 
 **Step 12.** Connect the red wires to the Motor (+) and the black wires to the Motor (–) terminals of each PWM controller as illustrated in Figure 2.
 
@@ -329,3 +329,6 @@ Submerge the pumps in their experimental chambers and run the programmed flow cy
 Completing all eight checks ensures that PumpResp is fully functional, electrically safe, and ready for experimental use.
 
 # 8. Appendices
+
+Appendix 1: Schematics of PumpResp
+![Schematics of PumpResp](images/PumpResp_schematics.png)

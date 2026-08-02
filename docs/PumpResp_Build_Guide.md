@@ -1,16 +1,16 @@
 ---
 title: "PumpResp Build Guide"
 author: "Sergey Morozov"
-date: "14 July 2026"
-revision: "0.6"
+date: "1 August 2026"
+revision: "0.7"
 toc: true
 toc-depth: 3
 ---
 
 # PumpResp Build Guide
-**Revision:** 0.6
+**Revision:** 0.7
 **Author:** Sergey Morozov  
-**Date:** 14 July 2026
+**Date:** 1 August 2026
 
 <!-- begin-md-image -->
 ![PumpResp Device](images/pumpresp_photo.jpg)
@@ -90,30 +90,33 @@ Use adhesive materials, mechanical and electrical tools listed in the section "T
 
 # 3. Bill of Materials
 
-Price estimates for generic components use Amazon.com  as a reference, based on pricing available in March 2026. Amazon is chosen because it provides broad international availability, relatively stable pricing, and consistent product listings, which makes it a practical baseline for reproducible cost estimates. Because many components on Amazon are sold only in bulk packs, the bill of materials lists the price of the entire pack even when only one piece is needed, which inflates the apparent cost of a single device and results in unnecessary surplus. In practice, individual components can often be purchased at lower cost from suppliers that support small‑quantity or single‑unit purchasing, including local electronics stores, online marketplaces, and global engineering distributors such as Mouser or Digi‑Key. Prices for specialized sensors and measurement devices are taken directly from manufacturers’ websites when these items are not consistently available through the above distributors.
+Price estimates for generic components use Amazon.com  as a reference, based on pricing available in August 2026. Amazon is chosen because it provides broad international availability, relatively stable pricing, and consistent product listings, which makes it a practical baseline for reproducible cost estimates. Because many components on Amazon are sold only in bulk packs, the bill of materials lists the price of the entire pack even when only one piece is needed, which inflates the apparent cost of a single device and results in unnecessary surplus. In practice, individual components can often be purchased at lower cost from suppliers that support small‑quantity or single‑unit purchasing, including local electronics stores, online marketplaces, and global engineering distributors such as Mouser or Digi‑Key. Prices for specialized sensors and measurement devices are taken directly from manufacturers’ websites when these items are not consistently available through the above distributors.
+
+Prices listed in this BOM exclude VAT, customs duties, and delivery costs.
 
 | Part Name | Manufacturer | Quantity | Unit Price (USD)¹ | Total Price (USD) | Notes |
 |-----------|--------------|----------|--------------------|--------------------|-------|
 | Industrial ABS enclosure, IP65, 200×120×75 mm | Generic | 1 pc | 10 | 10 | – |
-| 2‑pin waterproof automotive connectors | Generic | 1 set (10 male–female pairs) | 9 | 9 | Female connectors are also needed for pumps connected to PumpResp |
+| Waterproof automotive connectors (Superseal 1.5‑style), 2‑pin | Generic | 1 set (10 male–female pairs) | 9 | 9 | Female connectors are also needed for pumps connected to PumpResp²|
 | PWM motor speed controller, 1.8–12 V, 2 A | Generic | 8 pcs | 2 | 16 | 6–28 V PWM controllers can be used instead, but not with 5 V pumps |
 | Red and black wires, 20 AWG | Generic | 3 m each | 7 | 7 | Use 16 AWG for high‑current pumps |
-| 2-pin round rocker switch | Generic | 1 pc | 5 | 5 | Bulk pack (3–5 pcs) |
-| DC socket power jack, steel, 5.5×2.1 mm | Generic | 1 pc | 7 | 7 | Bulk pack (3–5 pcs) |
-| 1-channel relay, 5 V logic, 30 V, 10 A | Generic | 1 pc | 10 | 10 | Bulk pack (5–10 pcs). It can be replaced by 3.3 V logic relay if 3.3 V-logic Nano board is used² |
-| Arduino Nano–compatible board (ATmega328P) with Mini-B USB cable and screw‑terminal adapter | Generic | 1 kit | 9 | 9 | The board can be replaced by the Arduino Nano rev.3 or 3.3 V-board from Nano family² |
+| Round rocker switch, mounting hole diameter 15 mm, 2-pin | Generic | 1 pc | 6 | 6 | Bulk pack (3–5 pcs) |
+| DC power jack, steel, 5.5×2.1 mm | Generic | 1 pc | 7 | 7 | Bulk pack (3–5 pcs) |
+| 1-channel relay, 5 V logic, 30 V, 10 A | Generic | 1 pc | 10 | 10 | Bulk pack (5–10 pcs). It can be replaced by 3.3 V logic relay if 3.3 V-logic Nano board is used³ |
+| Arduino Nano–compatible board (ATmega328P) with Mini-B USB cable and screw‑terminal adapter | Generic | 1 kit | 9 | 9 | The board can be replaced by the Arduino Nano rev.3 or 3.3 V-board from Nano family³ |
 | M6 machine screw, 6 mm | Generic | 1 pc | 5 | 5 | Bulk pack (60–300 pcs) |
-| Push button, 25×19 mm | Generic | 1 pc | 7 | 7 | Bulk pack (5–10 pcs) |
-| LED, 5 mm | Generic | 1 pc | 5 | 5 | Bulk pack (50–200 pcs) |
-| Resistor, 220 Ω, ¼ W | Generic | 1 pc | 5 | 5 | Bulk pack (20–200 pcs) |
-| Female to male jumper wires, square jumpers, 10 cm | Generic | 1 kit | 4 | 4 | – |
+| Push button, mounting hole diameter 16 mm, 2-pin | Generic | 1 pc | 10 | 10 | Bulk pack (10 pcs) |
+| LED, 5 mm | Generic | 1 pc | 6 | 6 | Bulk pack (50–200 pcs) |
+| Resistor, 220 Ω, ¼ W | Generic | 1 pc | 6 | 6 | Bulk pack (20–200 pcs) |
+| Female to male jumper wires, square jumpers, 10 cm | Generic | 1 kit | 5 | 5 | – |
 
-**Grand total: 99 USD**
+**Grand total: 106 USD**
 
 *¹ Unit prices reflect the smallest purchasable quantity on Amazon.com. When only bulk packs are available, the listed price corresponds to the full pack even if a single piece is required.*
 
-*² The design is compatible with 3.3 V‑logic Arduino Nano–family boards (e.g., Nano Every, Nano 33 IoT, Nano 33 BLE) provided that the 5 V relay module is replaced with a 3 V/3.3 V logic‑compatible relay module powered from 3–3.3 V. All other digital I/O (status LED, push button, PWM control signals) operate correctly at 3.3 V logic levels.*
+*² This BOM does not include pumps or their cables.*
 
+*³ The design is compatible with 3.3 V‑logic Arduino Nano–family boards (e.g., Nano Every, Nano 33 IoT, Nano 33 BLE) provided that the 5 V relay module is replaced with a 3 V/3.3 V logic‑compatible relay module powered from 3–3.3 V. All other digital I/O (status LED, push button, PWM control signals) operate correctly at 3.3 V logic levels.*
 
 # 4. Tools and Consumables
 These items are not included in the BOM because they are general workshop supplies rather than project‑specific components, but they are still required for assembly. Most of the tools and consumables can be found in FabLabs, electronic/robotics clubs and Universities of Applied Sciences around the world.

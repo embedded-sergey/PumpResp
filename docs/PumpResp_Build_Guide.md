@@ -74,7 +74,7 @@ These licenses ensure open access, modifiability, and reproducibility across all
 
 ## 2.1 Environmental Safety
 
-PumpResp is designed to be water-resistant, providing protection against accidental splashes and operation in high humidity environments. To reduce moisture accumulation in humid environment, place an absorbent pack inside the enclosure. PumpResp is not waterproof: if the device is submerged or dropped into the water, immediately power it off, disconnect the USB cable  and do not resume operation until the enclosure and internal components have been thoroughly inspected and dried.
+PumpResp is designed to be water-resistant, providing protection against accidental splashes and operation in high humidity environments. To reduce moisture accumulation in humid environment, place an absorbent pack inside the enclosure. PumpResp is not waterproof: if the device is submerged or dropped into the water, immediately power it off, disconnect the USB cable and do not resume operation until the enclosure and internal components have been thoroughly inspected and dried.
 
 ## 2.2 Electrical Safety
 
@@ -97,14 +97,14 @@ Prices listed in this BOM exclude VAT, customs duties, and delivery costs.
 | Part Name | Manufacturer | Quantity | Unit Price (USD)¹ | Total Price (USD) | Notes |
 |-----------|--------------|----------|--------------------|--------------------|-------|
 | Industrial ABS enclosure, IP65, 200×120×75 mm | Generic | 1 pc | 10 | 10 | – |
-| Waterproof automotive connectors (Superseal 1.5‑style), 2‑pin | Generic | 1 set (10 male–female pairs) | 9 | 9 | Female connectors are also needed for pumps connected to PumpResp²|
+| Male waterproof automotive connectors (Superseal 1.5‑style), 2‑pin | Generic | 1 set (10 male–female pairs) | 9 | 9 | Female connectors are also needed for pumps connected to PumpResp²|
 | PWM motor speed controller, 1.8–12 V, 2 A | Generic | 8 pcs | 2 | 16 | 6–28 V PWM controllers can be used instead, but not with 5 V pumps |
 | Red and black wires, 20 AWG | Generic | 3 m each | 7 | 7 | Use 16 AWG for high‑current pumps |
 | Round rocker switch, mounting hole diameter 15 mm, 2-pin | Generic | 1 pc | 6 | 6 | Bulk pack (3–5 pcs) |
 | DC power jack, steel, 5.5×2.1 mm | Generic | 1 pc | 7 | 7 | Bulk pack (3–5 pcs) |
 | 1-channel relay, 5 V logic, 30 V, 10 A | Generic | 1 pc | 10 | 10 | Bulk pack (5–10 pcs). It can be replaced by 3.3 V logic relay if 3.3 V-logic Nano board is used³ |
 | Arduino Nano–compatible board (ATmega328P) with Mini-B USB cable and screw‑terminal adapter | Generic | 1 kit | 9 | 9 | The board can be replaced by the Arduino Nano rev.3 or 3.3 V-board from Nano family³ |
-| M6 machine screw, 6 mm | Generic | 1 pc | 5 | 5 | Bulk pack (60–300 pcs) |
+| M3 machine screw, 6 mm | Generic | 1 pc | 5 | 5 | Bulk pack (60–300 pcs) |
 | Push button, mounting hole diameter 16 mm, 2-pin | Generic | 1 pc | 10 | 10 | Bulk pack (10 pcs) |
 | LED, 5 mm | Generic | 1 pc | 6 | 6 | Bulk pack (50–200 pcs) |
 | Resistor, 220 Ω, ¼ W | Generic | 1 pc | 6 | 6 | Bulk pack (20–200 pcs) |
@@ -125,9 +125,9 @@ Mechanical tools:
 * utility cutter
 * long-nose pliers
 * wire cutters
-* screwdriver 
+* screwdriver
 * drill with step drill bit
-* rotary tool with 1 mm drill bit
+* rotary tool with 1 mm drill bit and cut‑off wheel
 
 Electrical tools and materials:
 * soldering iron
@@ -140,6 +140,7 @@ Adhesives:
 * hot-glue gun
 * hot-glue sticks
 * superglue
+* silicone tape
 
 Measuring and marking tools:
 * multimeter
@@ -155,23 +156,22 @@ Safety tools:
 This section contains 36 assembly steps covering mechanical preparation, wiring, and installation of all power‑distribution and control components. Before beginning the assembly, note that several steps in Sections 5 and 6 have corresponding functional checks in Section 7. These checks can be performed immediately after completing each relevant assembly step or after the full assembly is finished. Performing the checks in parallel with assembly helps identify wiring mistakes early and reduces the risk of component damage.
 
 ## 5.1 Preparing the enclosure
-PumpResp can be assembled using either a commercially available enclosure or the provided 3D‑printed enclosure. For the printed version, drilling (Steps 2–5) is not required; the STL files are available in the PumpResp repository.
+PumpResp can be assembled using either a commercially available enclosure or the provided 3D‑printed enclosure. The printed version already includes all openings for the switch, power jack, and display, so drilling and cutting are not required (Steps 2–5). STL files are available in the SensResp repository.
 
 **Step 1.** Unscrew the cover to open the enclosure.
 
-**Step 2.** Mark out the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, as shown in Figure 1.
+**Step 2.** Mark the hole positions on the base and on the cover of the enclosure using a ruler and a pencil, following the dimensions shown in Figure 1.
 
 Figure 1. Blueprint of the PumpResp enclosure  
 ![PumpResp enclosure blueprint](images/PumpResp_enclosure_blueprint.png)
 
-
-**Step 3.** If you use components with different form factors, or if you use an enclosure with different dimensions, adjust the blueprint accordingly or mark out the positions on the fly.
+**Step 3.** If you use components with different form factors or an enclosure with different dimensions, adjust the blueprint. Alternatively, mark the hole positions directly on the enclosure.
 
 **Step 4.** Drill the holes in the marked layout on the enclosure, then adjust the hole geometry using a utility cutter.
 
 **Step 5.** For oval‑shaped holes on the rear panel, drill two overlapping holes and shape the opening with a cutter or a rotary tool, including the top recess.
 
-**Step 6.** Remove the two protrusions on the bottom side of each body of a male waterproof connector using a utility cutter or a rotary tool with a sanding disk.
+**Step 6.** Remove the two protrusions on the bottom side of each body of a male waterproof connector using a utility cutter or a rotary tool with a cut‑off wheel.
 
 **Step 7.** Assemble eight male waterproof connectors with 8 cm wires. Ensure that the red wire is inserted into port 1 of the connector and the black wire into port 2, respectively. Incorrect color order can lead to wiring errors.
 
@@ -194,7 +194,7 @@ Figure 3. Assembly wires and multi‑wire junctions:
 
 **Step 13.** Mount the rocker power switch and the power connector to the rear panel of the enclosure.
 
-**Step 14.** Solder the free ends of both black multi‑wire junctions to the ground pin of the power connector, and insulate the joint with electrical tape.
+**Step 14.** Solder the free ends of both black multi‑wire junctions to the ground pin of the power connector, then insulate the joint with heat‑shrink tubing.
 
 **Step 15.** Solder the shortest red wire (shown in Figure 3) to the power pin of the power connector and the lower pin of the power switch.
 
@@ -205,9 +205,9 @@ Figure 3. Assembly wires and multi‑wire junctions:
 
 **Step 18.** Connect the remaining free end of the separate red wire, soldered to the power switch, to the relay’s Common (COM) terminal (see [Check 4](#check-4-powering-up-pwm-modules-and-dc-pumps)).
 
-**Step 19.** Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3, using a wire stripper.
+**Step 19.** Prepare the wire jumpers and remaining wires needed for the device assembly, as shown in Figure 3, using wire cutters.
 
-**Step 20.** Mount the screw‑terminal adapter to a side wall of the enclosure using an M6 machine screw inserted into the hole, ensuring that the D12 and D13 labels are oriented at the top so that the Arduino Nano’s D12 pin aligns with the adapter’s D12 terminal. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
+**Step 20.** Mount the screw‑terminal adapter to a side wall of the enclosure using an M3 machine screw inserted into the hole, ensuring that the D12 and D13 labels are oriented at the top so that the Arduino Nano’s D12 pin aligns with the adapter’s D12 terminal. Install the Arduino Nano–compatible board (ATmega328P) into the screw‑terminal adapter.
 
 **Step 21.** Connect the jumper wires to the relay board and secure the free wire ends in the screw‑terminal adapter as shown in Figure 2. For a cleaner layout and easier access to the Arduino and relay, route the red and black wires behind the terminal adapter as shown in Figure 4.
 
@@ -218,7 +218,7 @@ Figure 3. Assembly wires and multi‑wire junctions:
 
 **Step 24.** Connect the LED’s wires to the corresponding pins of the screw‑terminal adapter as shown in Figure 2.
 
-**Step 25.** Solder the white and black wires shown in Figure 3B to the push button.
+**Step 25.** Solder the green and black wires shown in Figure 3B to the push button.
 
 **Step 26.** Install the push button on the front panel using its mounting nut.
 
@@ -230,20 +230,20 @@ TODO: ---
 ## 5.5 Enabling communication with other devices (optional)
 **Step 28.** Make an additional rectangular hole on the side panel of the enclosure as shown in Figure 1. 
 
-**Step 29.** Prepare four jumper wires using a wire stripper. Glue the jumper heads together to form a four‑pin female connector as shown in Figure 4, so they remain aligned when inserted into the enclosure.
+**Step 29.** Prepare four jumper wires using wire cutters. Glue the jumper heads together to form a four‑pin female connector as shown in Figure 4, so they remain aligned when inserted into the enclosure.
 
-**Step 30.** Insert the connector into the rectangular hole and secure it to the enclosure wall using a hot‑glue gun.
+**Step 30.** Insert the connector into the rectangular opening and secure it to the enclosure wall using a hot‑glue gun (Figure 1, side view).
 
 **Step 31.** Connect the free ends of the connector to the screw‑terminal adapter for communication through either I²C (for GalvaResp; use pins A4 and A5 as shown in Figure 2) or UART (for FireSting; use pins D2 and D3 instead, see Arduino Nano pinmap).
 
 ## 5.6 Finalizing the enclosure
 **Step 32.** Insert the provided insulating material into the enclosure groove to prevent water contact between the environment and internal wiring.
 
-**Step 33.** Fabricate a water-resistant lid that is attached to the USB cable connected to the Arduino Nano–compatible board (ATmega328P). The lid must fit the opening on the cover of the enclosure and can be made from rubber or another flexible waterproof material.
+**Step 33.** Fabricate a water-resistant layer that is attached to the USB cable connected to the Arduino Nano–compatible board (ATmega328P). This must fit the opening on the cover of the enclosure and can be made from silicone tape or another flexible waterproof material.
 
 **Step 34.** Fabricate an additional water‑resistant lid to seal the opening during storage or when the USB cable is removed.
 
-**Step 35.** Screw the cover securely to the enclosure using the original mounting screws.
+**Step 35.** Screw the cover securely to the base using the original mounting screws.
 
 **Step 36.** Ensure the cover is seated evenly and that no wires are pinched when closing the enclosure.
 

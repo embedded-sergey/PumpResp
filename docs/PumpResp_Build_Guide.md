@@ -102,7 +102,7 @@ Prices listed in this BOM exclude VAT, customs duties, and delivery costs.
 | Red and black wires, 20 AWG | Generic | 3 m each | 7 | 7 | Use 16 AWG for high‑current pumps |
 | Round rocker switch, mounting hole diameter 15 mm, 2-pin | Generic | 1 pc | 6 | 6 | Bulk pack (3–5 pcs) |
 | DC power jack, steel, 5.5×2.1 mm | Generic | 1 pc | 7 | 7 | Bulk pack (3–5 pcs) |
-| 1-channel relay, 5 V logic, 30 V, 10 A | Generic | 1 pc | 10 | 10 | Bulk pack (5–10 pcs). It can be replaced by 3.3 V logic relay if 3.3 V-logic Nano board is used³ |
+| 1-channel relay, 5 V logic, 30 V, 10 A | Generic | 1 pc | 10 | 10 | Bulk pack (5–10 pcs). |
 | Arduino Nano–compatible board (ATmega328P) with Mini-B USB cable and screw‑terminal adapter | Generic | 1 kit | 9 | 9 | The board can be replaced by the Arduino Nano rev.3 or 3.3 V-board from Nano family³ |
 | M3 machine screw, 6 mm | Generic | 1 pc | 5 | 5 | Bulk pack (60–300 pcs) |
 | Push button, mounting hole diameter 16 mm, 2-pin | Generic | 1 pc | 10 | 10 | Bulk pack (10 pcs) |
@@ -116,7 +116,7 @@ Prices listed in this BOM exclude VAT, customs duties, and delivery costs.
 
 *² This BOM does not include pumps or their cables.*
 
-*³ The design is compatible with 3.3 V‑logic Arduino Nano–family boards (e.g., Nano Every, Nano 33 IoT, Nano 33 BLE) provided that the 5 V relay module is replaced with a 3 V/3.3 V logic‑compatible relay module powered from 3–3.3 V. All other digital I/O (status LED, push button, PWM control signals) operate correctly at 3.3 V logic levels.*
+*³ This guide does not cover 3.3 V‑logic operation; refer to ‘PumpResp_logic_notes_3v3.md’ for the necessary compatibility adjustments.*
 
 # 4. Tools and Consumables
 These items are not included in the BOM because they are general workshop supplies rather than project‑specific components, but they are still required for assembly. Most of the tools and consumables can be found in FabLabs, electronic/robotics clubs and Universities of Applied Sciences around the world.
@@ -185,7 +185,7 @@ Figure 1. Blueprint of the PumpResp enclosure
 Figure 2. Wiring scheme of the PumpResp
 ![Wiring scheme of the PumpResp](images/PumpResp_wiring_diagram.png)
 
-**Step 11.** Assemble the two red and two black multi‑wire junctions by soldering the wire bundles as shown in Figure 3. Insulate all exposed solder joints with electrical tape to ensure no bare wires remain.
+**Step 11.** Assemble the two red and two black multi‑wire junctions by soldering the wire bundles as shown in Figure 3. Insulate all exposed solder joints with electrical tape, then secure the tape with a small drop of superglue to ensure no bare wires remain.
 
 Figure 3. Assembly wires and multi‑wire junctions: 
 
@@ -212,7 +212,7 @@ Figure 3. Assembly wires and multi‑wire junctions:
 **Step 21.** Connect the jumper wires to the relay board and secure the free wire ends in the screw‑terminal adapter as shown in Figure 2. For a cleaner layout and easier access to the Arduino and relay, route the red and black wires behind the terminal adapter as shown in Figure 4.
 
 ## 5.4 Adding the user interface components
-**Step 22.** Solder the LED together with the 220 Ω resistor and the wires as shown in Figure 3.
+**Step 22.** Solder the LED together with the 220 Ω resistor and the wires as shown in Figure 3. Ensure correct LED polarity (long leg is typically +).
 
 **Step 23.** Mount the LED to the corresponding hole on the front panel of the enclosure using a hot-glue gun.
 

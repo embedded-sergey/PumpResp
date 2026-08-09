@@ -110,13 +110,13 @@ Prices listed in this BOM exclude VAT, customs duties, and delivery costs.
 | Resistor, 220 Ω, ¼ W | Generic | 1 pc | 6 | 6 | Bulk pack (20–200 pcs) |
 | Female to male jumper wires, square jumpers, 10 cm | Generic | 1 kit | 5 | 5 | – |
 
-**Grand total: 106 USD**
+**Grand total: 106 USD**²
 
 *¹ Unit prices reflect the smallest purchasable quantity on Amazon.com. When only bulk packs are available, the listed price corresponds to the full pack even if a single piece is required.*
 
-*² This BOM does not include pumps or their cables.*
+*² This BOM does not include motors or their cables.*
 
-*³ This guide does not cover 3.3 V‑logic operation; refer to ‘PumpResp_logic_notes_3v3.md’ for the necessary compatibility adjustments.*
+*³ This guide does not cover 3.3 V‑logic operation; refer to [PumpResp_3v3_logic_notes.md](PumpResp_3v3_logic_notes.md) for the necessary compatibility adjustments.*
 
 # 4. Tools and Consumables
 These items are not included in the BOM because they are general workshop supplies rather than project‑specific components, but they are still required for assembly. Most of the tools and consumables can be found in FabLabs, electronic/robotics clubs and Universities of Applied Sciences around the world.

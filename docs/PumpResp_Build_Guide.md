@@ -251,11 +251,11 @@ TODO: ---
 This section describes how to program the Arduino Nano and configure the software required to record data from PumpResp. The workflow below reflects the configuration tested and validated for this build.
 
 ## 6.1 Configuring the data‑logging software
-PumpResp was validated on Windows 10 using Microsoft Excel together with PLX-DAQ-2, an Excel-based serial data logger. This combination provides a straightforward installation process, stable serial communication, direct data logging, and real‑time plotting.
+PumpResp was validated on Windows 10 using Microsoft Excel together with PLX-DAQ-2, an Excel-based serial data logger. This combination provides a straightforward installation process, stable serial communication, and direct data logging.
 
-Install Microsoft Excel (version 2016 or newer) if it is not already available on your system. Download PLX‑DAQ‑2 from its original source: https://forum.arduino.cc/t/plx-daq-version-2-now-with-64-bit-support-and-further-new-features/420628. 
+Install Microsoft Excel (version 2016 or newer) if it is not already available on your system. Download PLX‑DAQ‑2 version 2.11 from its original source: https://forum.arduino.cc/t/plx-daq-version-2-now-with-64-bit-support-and-further-new-features/420628. 
 
-PumpResp includes a macro‑free Excel template (PumpResp_template.xlsx) containing recommended column names, formatting, and real‑time plots. This template is used together with PLX‑DAQ‑2 as described in Section 6.4.
+PumpResp includes a macro‑free Excel template (PumpResp_template.xlsx) containing recommended column names and formatting. This template is used together with PLX‑DAQ‑2 as described in Section 6.4.
 
 Note that PLX‑DAQ‑2 is available only for Windows. Users working on macOS or Linux may employ alternative serial‑logging tools such as CoolTerm or Python with the PySerial library; however, these alternatives were not validated during development and are not covered in this guide.
 
@@ -266,11 +266,9 @@ Since PLX‑DAQ‑2 cannot be redistributed after modification and does not incl
 
 2. Copy the 'PumpResp' sheet into PLX‑DAQ‑2.xlsm. Open both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm, right‑click the PumpResp sheet tab, select "Move or Copy…" and select PLX‑DAQ‑2.xlsm, press OK. Close PumpResp_template.xlsm without saving.
 
-3. Assign the Plotting macro. In PLX‑DAQ‑2.xlsm, right‑click the "Show Plots" checkbox, select "Assign Macro…", choose "Sheet2.ShowPlotCheckBox", and press OK.
+3. Delete all sheets except PumpResp. Remove all other sheets in PLX‑DAQ‑2.xlsm so that only the PumpResp sheet remains.
 
-4. Delete all sheets except PumpResp. Remove all other sheets in PLX‑DAQ‑2.xlsm so that only the PumpResp sheet remains.
-
-5. Save the file PLX‑DAQ‑2.xlsm in Excel, close it and rename to PumpResp.xlsm.
+4. Save the file PLX‑DAQ‑2.xlsm in Excel, close it and rename to PumpResp.xlsm.
 
 Keep a backup copy of the assembled PumpResp.xlsm outside your experiment folders. If the file is lost or overwritten, it must be rebuilt using the steps in Section 6.2.
 

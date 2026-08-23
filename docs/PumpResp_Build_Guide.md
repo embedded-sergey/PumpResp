@@ -262,7 +262,7 @@ Note that PLX‑DAQ‑2 is available only for Windows. Users working on macOS or
 ## 6.2 Preparing the PumpResp Excel Environment
 Since PLX‑DAQ‑2 cannot be redistributed after modification and does not include the PumpResp worksheet, users should set up the PumpResp environment locally. The setup is a simple, one‑time, five‑step process and requires no programming skills.
 
-1. Unblock both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm because Windows blocks downloaded Excel macro files. Either enable Macros within Excel or right‑click the .xlsm file, select 'Properties', tick 'Unblock' and press the 'Apply' button.
+1. Unblock both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm because Windows blocks downloaded Excel macro files. Right‑click the .xlsm file, select 'Properties', tick 'Unblock' and press the 'Apply' button. In addition, "Enable Macros" / "Enable Content" in the pop-up message when Excel has been opened.
 
 2. Copy the 'PumpResp' sheet into PLX‑DAQ‑2.xlsm. Open both PLX‑DAQ‑2.xlsm and PumpResp_template.xlsm, right‑click the PumpResp sheet tab, select "Move or Copy…" and select PLX‑DAQ‑2.xlsm, press OK. Close PumpResp_template.xlsm without saving.
 
@@ -276,11 +276,17 @@ Keep a backup copy of the assembled PumpResp.xlsm outside your experiment folder
 PumpResp uses an Arduino Nano microcontroller (original or clone). To load the firmware:
 
 1. Install Arduino IDE version 2.0 or later from the official Arduino website.
+
 2. Connect the Arduino Nano to your PC via USB.
+
 3. In Tools → Board, select Arduino Nano.
+
 4. In Tools → Processor, select ATmega328P (Old Bootloader) if you are using a common Nano clone.
+
 5. Open the provided PumpResp.ino firmware file.
+
 6. Adjust the variable values for respirometry phases according to your experimental design.
+
 7. Click Upload to flash the firmware to the board.
 
 After uploading, the Arduino Nano will begin sending serial data over USB to PC (see [Check 6](#check-6-controlling-pumps-by-arduino-code)).
@@ -289,8 +295,11 @@ After uploading, the Arduino Nano will begin sending serial data over USB to PC 
 Open the PumpResp.xlsm file and click on "Open PLX DAQ UI" button there if it is not popped up automatically.
 
 1. In the PLX‑DAQ‑2 control panel, select the serial port (COM number) corresponding to the connected Arduino Nano. 
+
 2. Click Connect to open the serial port, initialize communication, and begin writing incoming data directly into the spreadsheet.
+
 3. For improved performance and stability during long recordings, minimize the PLX‑DAQ‑2 control window while data collection is in progress. 
+
 4. Note that editing the Excel sheet during the data collection might break the serial connection and Excel will be relaunched.
 
 ## 6.5 Exporting and managing recorded data
